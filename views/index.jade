@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user && user.role !== 'admin')
+    .header-container
+      a(href="/logout") Logout
+    p You are currently logged in as #{user.username}
+  if (user && user.role === 'admin')
+    .header-container
+      a(href="/logout") Logout
+    p admin user
